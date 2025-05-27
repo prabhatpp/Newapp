@@ -6,7 +6,7 @@ const connectDB = require('./config/db'); // Import the database connection func
 const shopRoutes = require('./routes/shopRoutes'); // Import shop routes
 const purchaseHistoryRoutes = require('./routes/purchaseHistoryRoutes'); // Import purchase history routes
 
-// Load environment variabless
+// Load environment variables
 dotenv.config();
 
 // Initialize the Express app
