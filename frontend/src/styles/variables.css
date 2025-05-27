@@ -1,0 +1,45 @@
+:root {
+    --primary-color: #a220ec;
+    --secondary-color: #f79409;
+    --background-color: #b6f114;
+    --text-color: #32a52e;
+    --font-family: 'Arial Black', sans-serif;
+  }
+  
+
+  
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #fffeff;
+  color: #111011;
+  line-height: 1.6;
+}
+
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.image-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.home-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}

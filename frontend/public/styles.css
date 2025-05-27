@@ -1,0 +1,157 @@
+/* General body styles */
+body {
+    font-family: 'Poppins', Arial, sans-serif; /* Modern and elegant font */
+    background-color: #f9f9fc; /* Soft light blue-gray background */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Navbar styling */
+.navbar {
+    background-color: #004080; /* Deep blue for the navbar background */
+    color: white; /* White text for contrast */
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar a {
+    color: #ffd700; /* Golden yellow links for a vibrant contrast */
+    text-decoration: none;
+    padding: 10px;
+    margin: 0 15px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.navbar a:hover {
+    background-color: #0066cc; /* Lighter blue for hover effect */
+    border-radius: 5px;
+}
+
+/* Food Cards - Card grid */
+.food-cards {
+    padding: 20px;
+}
+
+.food-cards .card {
+    background-color: #ffffff; /* Clean white for card background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 64, 128, 0.1); /* Subtle blue shadow */
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.food-cards .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 64, 128, 0.2); /* Stronger shadow on hover */
+}
+
+.food-cards img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.food-cards .card-content {
+    padding: 20px;
+}
+
+.food-cards h3 {
+    font-size: 24px;
+    color: #004080; /* Deep blue for headers */
+}
+
+.food-cards p {
+    font-size: 14px;
+    color: #666666; /* Neutral gray for descriptions */
+}
+
+.food-cards .price {
+    font-size: 20px;
+    color: #333333; /* Dark gray for price */
+    margin-top: 10px;
+}
+
+/* Shoplist page - Card layout */
+.shoplist .card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 64, 128, 0.1);
+    padding: 15px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.shoplist .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 64, 128, 0.2);
+}
+
+.shoplist .card .card-content {
+    padding: 20px;
+}
+
+.shoplist .card .card-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.shoplist .cart-summary {
+    padding: 20px;
+    background-color: #f4f4f9; /* Light gray background for summary */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 64, 128, 0.1);
+}
+
+.shoplist .cart-summary h4 {
+    margin-bottom: 10px;
+    color: #004080; /* Deep blue */
+}
+
+.shoplist .cart-summary ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.shoplist .cart-summary ul li {
+    margin-bottom: 10px;
+}
+
+/* Subscription page */
+.subscription {
+    padding: 20px;
+}
+
+.subscription h2 {
+    font-size: 32px;
+    color: #004080; /* Deep blue */
+    margin-bottom: 20px;
+}
+
+.subscription .card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 64, 128, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Responsive design - Mobile view */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .food-cards .card,
+    .shoplist .card {
+        margin: 0;
+    }
+}

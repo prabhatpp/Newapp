@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  backend:
+    build: .
+    container_name: node-backend
+    ports:
+      - "5000:5000"
+    networks:
+      - mynetwork
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/tiffinService
+    restart: always
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongo-data:/data/db
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    external: true  # Use the manually created shared network

@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "axios": "^1.7.9",
+    "i18next": "^24.2.1",
+    "i18next-browser-languagedetector": "^8.0.2",
+    "react-google-places-autocomplete": "^4.1.0",
+    "react-i18next": "^15.4.0"
+  }
+}
