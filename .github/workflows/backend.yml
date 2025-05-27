@@ -26,17 +26,26 @@ jobs:
       - name: Create Docker Network
         run: docker network create mynetwork || true
 
-      - name: Start Backend and Mongo
+      # OPTIONAL: Only needed if you want to use legacy `docker-compose`
+      #- name: Install Docker Compose (Legacy)
+       # run: |
+        #  sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" \
+         # -o /usr/local/bin/docker-compose
+          #sudo chmod +x /usr/local/bin/docker-compose
+          #docker-compose version
+
+      # Use modern `docker compose` (preferred way)
+      - name: Start Backend and MongoDB
         working-directory: backend
-        run: docker-compose up -d --build
+        run: docker compose up -d --build
 
       - name: Health Check Backend
         run: |
-          echo "Waiting for backend..."
+          echo "Waiting for backend to start..."
           sleep 10
           curl -f http://localhost:5000 || (echo "Backend not reachable!" && exit 1)
 
-      - name: Cleanup
+      - name: Stop and Clean up
         if: always()
         working-directory: backend
-        run: docker-compose down
+        run: docker compose down
