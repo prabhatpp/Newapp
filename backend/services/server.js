@@ -16,7 +16,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Connect to MongoDB
+// Connect to MongoDB.
 connectDB(); // Use the custom `connectDB` function from './config/db'
 
 // Schema and Model for Images (if required)
