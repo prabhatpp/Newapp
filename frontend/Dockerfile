@@ -1,23 +1,20 @@
-# Use official Node.js image
+# Use an official Node image
 FROM node:18-alpine
 
 # Set working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json first
-COPY package.json package-lock.json ./
+# Copy package.json and package-lock.json
+COPY package*.json ./
 
-# Install dependencies
+# Install ALL dependencies (including devDependencies like react-scripts)
 RUN npm install
 
-# Copy all source code
+# Copy the rest of your source code
 COPY . .
 
-# Fix permissions (optional, but helps inside Docker)
-#RUN chmod -R 777 /app/node_modules
+# Expose port used by React dev server
+EXPOSE 3000
 
-# Expose port 3000
-#EXPOSE 3000
-
-# Start the React app
+# Start the development server
 CMD ["npm", "start"]

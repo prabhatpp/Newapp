@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.76d65484.css",
-    "main.js": "/static/js/main.87d4d9cb.js",
+    "main.css": "/static/css/main.daebcbf5.css",
+    "main.js": "/static/js/main.0e34d930.js",
+    "static/media/tiffin-service1.jpg": "/static/media/tiffin-service1.786a1d1cb171f2a981f7.jpg",
     "index.html": "/index.html",
-    "main.76d65484.css.map": "/static/css/main.76d65484.css.map",
-    "main.87d4d9cb.js.map": "/static/js/main.87d4d9cb.js.map"
+    "main.daebcbf5.css.map": "/static/css/main.daebcbf5.css.map",
+    "main.0e34d930.js.map": "/static/js/main.0e34d930.js.map"
   },
   "entrypoints": [
-    "static/css/main.76d65484.css",
-    "static/js/main.87d4d9cb.js"
+    "static/css/main.daebcbf5.css",
+    "static/js/main.0e34d930.js"
   ]
 }

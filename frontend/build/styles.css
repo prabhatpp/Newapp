@@ -1,7 +1,7 @@
 /* General body styles */
 body {
     font-family: 'Poppins', Arial, sans-serif; /* Modern and elegant font */
-    background-color: #33925a; /* Soft light blue-gray background */
+    background-color: #f9f9fc; /* Soft light blue-gray background */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -42,7 +42,7 @@ body {
 .food-cards .card {
     background-color: #ffffff; /* Clean white for card background */
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(25, 121, 218, 0.1); /* Subtle blue shadow */
+    box-shadow: 0 4px 8px rgba(0, 64, 128, 0.1); /* Subtle blue shadow */
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -107,7 +107,7 @@ body {
     padding: 20px;
     background-color: #f4f4f9; /* Light gray background for summary */
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 128, 11, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 64, 128, 0.1);
 }
 
 .shoplist .cart-summary h4 {
@@ -136,7 +136,7 @@ body {
 }
 
 .subscription .card {
-    background-color: #d12323;
+    background-color: #ffffff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 64, 128, 0.1);
