@@ -1,20 +1,19 @@
 pipeline {
     agent any
-
     stages {
-        stage('Build') {
+        stage('Clone') {
             steps {
-                echo 'Building...'
+                git 'https://github.com/prabhatpp/Newapp.git'
             }
         }
-        stage('Test') {
+        stage('Build Docker Image') {
             steps {
-                echo 'Testing...'
+                sh 'docker build -t newapp:latest .'
             }
         }
-        stage('Deploy') {
+        stage('Run App') {
             steps {
-                echo 'Deploying...'
+                sh 'docker run -d -p 3000:3000 --name newapp newapp:latest'
             }
         }
     }
