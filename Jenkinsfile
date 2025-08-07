@@ -3,12 +3,16 @@ pipeline {
     stages {
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t newapp:latest .'
+                bat 'docker build -t newapp:latest .'
             }
         }
         stage('Run App') {
             steps {
-                sh 'docker run -d -p 3000:3000 --name newapp newapp:latest'
+                bat '''
+                docker stop newapp || exit 0
+                docker rm newapp || exit 0
+                docker run -d -p 3000:3000 --name newapp newapp:latest
+                '''
             }
         }
     }
