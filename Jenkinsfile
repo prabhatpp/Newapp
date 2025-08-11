@@ -5,7 +5,7 @@ pipeline {
         stage('Check & Run Backend') {
             steps {
                 script {
-                    def backendRunning = sh(script: "docker ps --filter 'name=backend' --format '{{.Names}}'", returnStdout: true).trim()
+                    def backendRunning = sh(script: "docker ps --filter 'name=node-backend' --format '{{.Names}}'", returnStdout: true).trim()
                     if (backendRunning) {
                         echo "✅ Backend container is already running: ${backendRunning}"
                     } else {
@@ -22,7 +22,7 @@ pipeline {
         stage('Check & Run Frontend') {
             steps {
                 script {
-                    def frontendRunning = sh(script: "docker ps --filter 'name=frontend' --format '{{.Names}}'", returnStdout: true).trim()
+                    def frontendRunning = sh(script: "docker ps --filter 'name=tiffin-service' --format '{{.Names}}'", returnStdout: true).trim()
                     if (frontendRunning) {
                         echo "✅ Frontend container is already running: ${frontendRunning}"
                     } else {
