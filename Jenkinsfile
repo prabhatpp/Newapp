@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     dir('backend') {
-                        def backendRunning = sh(script: "docker ps --filter 'name=node-backend' --filter 'status=running' -q", returnStdout: true).trim()
+                        def backendRunning = bat(script: "docker ps --filter 'name=node-backend' --filter 'status=running' -q", returnStdout: true).trim()
                         if (backendRunning) {
                             echo "✅ Backend container is already running."
                         } else {
@@ -22,7 +22,7 @@ pipeline {
             steps {
                 script {
                     dir('frontend') {
-                        def frontendRunning = sh(script: "docker ps --filter 'name=tiffin-service' --filter 'status=running' -q", returnStdout: true).trim()
+                        def frontendRunning = bat(script: "docker ps --filter 'name=tiffin-service' --filter 'status=running' -q", returnStdout: true).trim()
                         if (frontendRunning) {
                             echo "✅ Frontend container is already running."
                         } else {
