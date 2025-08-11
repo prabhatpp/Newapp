@@ -1,40 +1,39 @@
 pipeline {
     agent any
 
-    environment {
-        FRONTEND_IMAGE = "my-frontend-image"
-        BACKEND_IMAGE = "my-backend-image"
-    }
-
     stages {
-        stage('Build Docker Images') {
+        stage('Check & Run Backend') {
             steps {
                 script {
-                    echo "Building Frontend Image..."
-                    def frontend = docker.build("${FRONTEND_IMAGE}", "./frontend")
-
-                    echo "Building Backend Image..."
-                    def backend = docker.build("${BACKEND_IMAGE}", "./backend")
+                    def backendRunning = sh(script: "docker ps --filter 'name=backend' --format '{{.Names}}'", returnStdout: true).trim()
+                    if (backendRunning) {
+                        echo "✅ Backend container is already running: ${backendRunning}"
+                    } else {
+                        echo "🚀 Starting backend with docker-compose..."
+                        sh """
+                            cd backend
+                            docker-compose up -d
+                        """
+                    }
                 }
             }
         }
 
-        stage('Run Containers') {
+        stage('Check & Run Frontend') {
             steps {
                 script {
-                    echo "Running frontend container..."
-                    docker.image("${FRONTEND_IMAGE}").run("-d -p 3000:3000")
-
-                    echo "Running backend container..."
-                    docker.image("${BACKEND_IMAGE}").run("-d -p 5000:5000")
+                    def frontendRunning = sh(script: "docker ps --filter 'name=frontend' --format '{{.Names}}'", returnStdout: true).trim()
+                    if (frontendRunning) {
+                        echo "✅ Frontend container is already running: ${frontendRunning}"
+                    } else {
+                        echo "🚀 Starting frontend with docker-compose..."
+                        sh """
+                            cd frontend
+                            docker-compose up -d
+                        """
+                    }
                 }
             }
-        }
-    }
-
-    post {
-        failure {
-            echo "❌ Something went wrong during the build/deployment process."
         }
     }
 }
