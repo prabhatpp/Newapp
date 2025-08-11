@@ -5,15 +5,14 @@ pipeline {
         stage('Check & Run Backend') {
             steps {
                 script {
-                    def backendRunning = bat(script: 'docker ps --filter "name=node-backend" --format "{{.Names}}"', returnStdout: true).trim()
-                    if (backendRunning) {
-                        echo "✅ Backend container is already running: ${backendRunning}"
-                    } else {
-                        echo "🚀 Starting backend with docker-compose..."
-                        bat """
-                            cd backend
-                            docker-compose up -d
-                        """
+                    dir('backend') {
+                        def backendRunning = sh(script: "docker ps --filter 'name=node-backend' --filter 'status=running' -q", returnStdout: true).trim()
+                        if (backendRunning) {
+                            echo "✅ Backend container is already running."
+                        } else {
+                            echo "🚀 Starting Backend container..."
+                            sh 'docker-compose up -d'
+                        }
                     }
                 }
             }
@@ -22,15 +21,14 @@ pipeline {
         stage('Check & Run Frontend') {
             steps {
                 script {
-                    def frontendRunning = bat(script: 'docker ps --filter "name=tiffin-service" --format "{{.Names}}"', returnStdout: true).trim()
-                    if (frontendRunning) {
-                        echo "✅ Frontend container is already running: ${frontendRunning}"
-                    } else {
-                        echo "🚀 Starting frontend with docker-compose..."
-                        bat """
-                            cd frontend
-                            docker-compose up -d
-                        """
+                    dir('frontend') {
+                        def frontendRunning = sh(script: "docker ps --filter 'name=tiffin-service' --filter 'status=running' -q", returnStdout: true).trim()
+                        if (frontendRunning) {
+                            echo "✅ Frontend container is already running."
+                        } else {
+                            echo "🚀 Starting Frontend container..."
+                            sh 'docker-compose up -d'
+                        }
                     }
                 }
             }
