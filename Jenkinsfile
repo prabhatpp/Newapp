@@ -11,7 +11,7 @@ pipeline {
                             echo "✅ Backend container is already running."
                         } else {
                             echo "🚀 Starting Backend container..."
-                            sh 'docker-compose up -d'
+                            bat 'docker-compose up -d'
                         }
                     }
                 }
@@ -27,7 +27,7 @@ pipeline {
                             echo "✅ Frontend container is already running."
                         } else {
                             echo "🚀 Starting Frontend container..."
-                            sh 'docker-compose up -d'
+                            bat 'docker-compose up -d'
                         }
                     }
                 }
