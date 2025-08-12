@@ -2,35 +2,28 @@ pipeline {
     agent any
 
     stages {
-        stage('Check & Run Backend') {
+        stage('Checkout') {
             steps {
-                script {
-                    dir('backend') {
-                        def backendRunning = bat(script: "docker ps --filter 'name=node-backend' --filter 'status=running' -q", returnStdout: true).trim()
-                        if (backendRunning) {
-                            echo "✅ Backend container is already running."
-                        } else {
-                            echo "🚀 Starting Backend container..."
-                            bat 'docker-compose up -d'
-                        }
-                    }
-                }
+                // This pulls your code from the linked SCM (GitHub, Bitbucket, etc.)
+                checkout scm
             }
         }
 
-        stage('Check & Run Frontend') {
+        stage('Backend - Docker Compose Up') {
             steps {
-                script {
-                    dir('frontend') {
-                        def frontendRunning = bat(script: "docker ps --filter 'name=tiffin-service' --filter 'status=running' -q", returnStdout: true).trim()
-                        if (frontendRunning) {
-                            echo "✅ Frontend container is already running."
-                        } else {
-                            echo "🚀 Starting Frontend container..."
-                            bat 'docker-compose up -d'
-                        }
-                    }
-                }
+                bat '''
+                cd backend
+                docker-compose up -d
+                '''
+            }
+        }
+
+        stage('Frontend - Docker Compose Up') {
+            steps {
+                bat '''
+                cd frontend
+                docker-compose up -d
+                '''
             }
         }
     }
